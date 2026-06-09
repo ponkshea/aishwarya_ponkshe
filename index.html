@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aishwarya Ponkshe — Automotive Engineer & Product Manager</title>
+  <meta name="description" content="Portfolio of Aishwarya Ponkshe — Automotive Engineer and Product Manager building the future of mobility." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700;1,900&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet" />
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', system-ui, sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #D2CFC4; border-radius: 3px; }
+
+    /* Page transition */
+    @keyframes pageIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .page-enter { animation: pageIn 0.3s ease forwards; }
+
+    /* Responsive layout */
+    .main-content {
+      margin-left: 220px;
+      min-height: 100vh;
+      position: relative;
+      z-index: 1;
+    }
+    @media (max-width: 900px) {
+      .main-content { margin-left: 0 !important; padding-top: 64px !important; }
+    }
+    @media (max-width: 600px) {
+      .main-content { padding-top: 60px !important; }
+    }
+
+    /* Content padding responsive */
+    .page-pad { padding: 72px 48px 80px 0; max-width: 1100px; margin: 0 auto; }
+    @media (max-width: 900px) {
+      .page-pad { padding: 40px 24px 60px 24px !important; }
+    }
+    @media (max-width: 600px) {
+      .page-pad { padding: 32px 16px 48px 16px !important; }
+    }
+
+    /* Motion path */
+    .motion-path {
+      position: fixed; inset: 0;
+      pointer-events: none; z-index: 0; overflow: hidden; opacity: 0.28;
+    }
+    @keyframes dashDraw {
+      from { stroke-dashoffset: 2400; }
+      to   { stroke-dashoffset: 0; }
+    }
+    .motion-line {
+      stroke-dasharray: 2400;
+      stroke-dashoffset: 2400;
+      animation: dashDraw 4s ease forwards;
+    }
+    .motion-line-2 {
+      stroke-dasharray: 2000;
+      stroke-dashoffset: 2000;
+      animation: dashDraw 3.5s 0.6s ease forwards;
+    }
+  </style>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel" src="components/Icons.jsx"></script>
+<script type="text/babel" src="components/Nav.jsx"></script>
+<script type="text/babel" src="components/Home.jsx"></script>
+<script type="text/babel" src="components/Blog.jsx"></script>
+<script type="text/babel" src="components/Experiments.jsx"></script>
+<script type="text/babel" src="components/Experience.jsx"></script>
+<script type="text/babel" src="components/Teaching.jsx"></script>
+<script type="text/babel" src="components/Contact.jsx"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+
+<script type="text/babel">
+
+const SCHEMES = {
+  ink:      { green: '#33408C', greenLight: '#9CA0DC', name: 'Ink' },
+  graphite: { green: '#2B2B30', greenLight: '#8C8C96', name: 'Graphite' },
+  amber:    { green: '#C9701F', greenLight: '#E0A567', name: 'Amber' },
+  forest:   { green: '#2E5A3E', greenLight: '#85B894', name: 'Forest' },
+  oxide:    { green: '#A8431F', greenLight: '#E0916B', name: 'Oxide' },
+  teal:     { green: '#0F7373', greenLight: '#5FB3B3', name: 'Teal' },
+  wine:     { green: '#8A2F4D', greenLight: '#C98AA0', name: 'Wine' },
+  slate:    { green: '#3D4F66', greenLight: '#8FA2BA', name: 'Slate' },
+  ember:    { green: '#BF4A26', greenLight: '#E89A78', name: 'Ember' },
+};
+
+const Texture = ({ kind, accent, dark }) => {
+  if (!kind || kind === 'none') return null;
+  const line = dark ? 'rgba(220,224,240,0.9)' : accent.green;
+  const base = { position: 'fixed', inset: 0, pointerEvents: 'none', zIndex: 40 };
+  let style = base;
+  if (kind === 'grid') {
+    style = { ...base, opacity: dark ? 0.05 : 0.06,
+      backgroundImage: `linear-gradient(${line} 1px, transparent 1px), linear-gradient(90deg, ${line} 1px, transparent 1px)`,
+      backgroundSize: '34px 34px' };
+  } else if (kind === 'dots') {
+    style = { ...base, opacity: dark ? 0.10 : 0.12,
+      backgroundImage: `radial-gradient(${line} 1.1px, transparent 1.4px)`,
+      backgroundSize: '22px 22px' };
+  } else if (kind === 'grain') {
+    const svg = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E";
+    style = { ...base, opacity: dark ? 0.09 : 0.05, backgroundImage: `url(\"${svg}\")`, mixBlendMode: dark ? 'screen' : 'multiply' };
+  } else if (kind === 'contour') {
+    const c1 = line;
+    style = { ...base, opacity: dark ? 0.07 : 0.08,
+      backgroundImage: `repeating-radial-gradient(circle at 18% 30%, transparent 0 28px, ${c1} 28px 29px, transparent 29px 60px), repeating-radial-gradient(circle at 82% 78%, transparent 0 34px, ${c1} 34px 35px, transparent 35px 70px)` };
+  }
+  return <div style={style} aria-hidden="true" />;
+};
+
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "colorScheme": "slate",
+  "texture": "none",
+  "showMotionPath": true,
+  "layoutDensity": "spacious"
+}/*EDITMODE-END*/;
+
+const MotionPath = ({ accent }) => (
+  <div className="motion-path">
+    <svg viewBox="0 0 1200 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <path className="motion-line"
+        d="M -60 720 Q 180 520 380 620 Q 580 720 800 420 Q 1020 120 1260 320"
+        fill="none" stroke={accent.green} strokeWidth="1.5" strokeLinecap="round" />
+      <path className="motion-line-2"
+        d="M -60 200 Q 280 360 500 200 Q 720 40 920 260 Q 1120 480 1260 380"
+        fill="none" stroke={accent.green} strokeWidth="1" strokeLinecap="round" opacity="0.5" />
+    </svg>
+  </div>
+);
+
+const App = () => {
+  const [active, setActive]   = React.useState('home');
+  const [dark, setDark]       = React.useState(false);
+  const [pageKey, setPageKey] = React.useState(0);
+  const [t, setTweak]         = useTweaks(TWEAK_DEFAULTS);
+
+  const accent = SCHEMES[t.colorScheme] || SCHEMES.ink;
+
+  const navigate = (tab) => {
+    if (tab === active) return;
+    setActive(tab);
+    setPageKey(k => k + 1);
+  };
+
+  const bg     = dark ? '#0E0E12' : '#FAFAF7';
+  const sharedProps = { dark, accent };
+
+  const pages = {
+    home:       <Home       {...sharedProps} />,
+    blog:       <Blog       {...sharedProps} />,
+    experiments: <Experiments {...sharedProps} />,
+    experience: <Experience {...sharedProps} />,
+    teaching:   <Teaching   {...sharedProps} />,
+    contact:    <Contact    {...sharedProps} />,
+  };
+
+  return (
+    <div style={{ minHeight: '100vh', background: bg, transition: 'background 0.3s' }}>
+      {t.showMotionPath && active === 'home' && <MotionPath accent={accent} />}
+      <Texture kind={t.texture} accent={accent} dark={dark} />
+
+      <Nav active={active} setActive={navigate} dark={dark} setDark={setDark} accent={accent} />
+
+      <main className={`main-content page-enter`} key={pageKey}>
+        {pages[active]}
+      </main>
+
+      <TweaksPanel>
+        <TweakSection label="Color Scheme" />
+        <TweakRadio label="Palette"
+          value={t.colorScheme}
+          options={Object.keys(SCHEMES)}
+          onChange={(v) => setTweak('colorScheme', v)} />
+
+        <TweakSection label="Texture" />
+        <TweakRadio label="Background"
+          value={t.texture}
+          options={['none', 'grid', 'dots', 'grain', 'contour']}
+          onChange={(v) => setTweak('texture', v)} />
+
+        <TweakSection label="Home" />
+        <TweakToggle label="Animated road lines"
+          value={t.showMotionPath}
+          onChange={(v) => setTweak('showMotionPath', v)} />
+
+        <TweakSection label="Theme" />
+        <TweakToggle label="Dark mode"
+          value={dark}
+          onChange={(v) => setDark(v)} />
+      </TweaksPanel>
+    </div>
+  );
+};
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>
