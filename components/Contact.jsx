@@ -54,7 +54,7 @@ const Contact = ({ dark, accent }) => {
 
       {/* Hero — full bleed green */}
       <div style={{ background: c.green }}>
-        <div className="contact-hero-pad" style={{ maxWidth: '1100px', margin: '0 auto', padding: '80px 48px 72px 0' }}>
+        <div className="contact-hero-pad rpad" style={{ maxWidth: '1100px', margin: '0 auto', padding: '80px 48px 72px 0' }}>
           <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '11px', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.6)', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '10px' }}>
             <Icon name="message" size={13} color="rgba(255,255,255,0.6)" />
             Let's Talk
@@ -69,7 +69,7 @@ const Contact = ({ dark, accent }) => {
       </div>
 
       {/* Availability badge */}
-      <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 48px 0 0', width: '100%', boxSizing: 'border-box' }}>
+      <div className="rpad" style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 48px 0 0', width: '100%', boxSizing: 'border-box' }}>
         <div style={{ transform: 'translateY(-24px)', display: 'inline-flex', alignItems: 'center', gap: '10px', background: c.card, border: `1.5px solid ${c.border}`, borderRadius: '40px', padding: '12px 20px', boxShadow: '0 8px 24px rgba(0,0,0,0.08)' }}>
           <span style={{ width: '9px', height: '9px', borderRadius: '50%', background: a.green, display: 'inline-block', animation: 'pulse 2s infinite', flexShrink: 0 }}></span>
           <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '13px', fontWeight: 600, color: c.text }}>Available for new opportunities</span>
@@ -77,7 +77,7 @@ const Contact = ({ dark, accent }) => {
         </div>
       </div>
 
-      <div className="contact-body-pad" style={{ maxWidth: '1100px', margin: '0 auto', padding: '8px 48px 60px 0', width: '100%', boxSizing: 'border-box' }}>
+      <div className="contact-body-pad rpad" style={{ maxWidth: '1100px', margin: '0 auto', padding: '8px 48px 60px 0', width: '100%', boxSizing: 'border-box' }}>
 
         {/* Contact cards */}
         <div className="contact-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '16px', marginBottom: '20px' }}>
@@ -145,7 +145,7 @@ const Contact = ({ dark, accent }) => {
 
       {/* Footer */}
       <div style={{ marginTop: 'auto', borderTop: `1px solid ${c.border}`, padding: '20px 0', transition: 'border-color 0.3s' }}>
-        <div className="contact-footer-pad" style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 48px 0 0', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '10px' }}>
+        <div className="contact-footer-pad rpad" style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 48px 0 0', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '10px' }}>
           <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '20px', fontWeight: 900, color: c.green }}>A.</div>
           <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '12px', color: c.muted }}>Aishwarya Ponkshe · Automotive Engineer · Product Manager</div>
           <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '12px', color: c.muted }}>© 2026</div>

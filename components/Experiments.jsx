@@ -108,7 +108,7 @@ const Experiments = ({ dark, accent }) => {
   };
 
   return (
-    <div style={{ minHeight: '100vh', background: c.bg, padding: '72px 48px 80px 0', maxWidth: '1100px', margin: '0 auto', transition: 'background 0.3s' }}>
+    <div className="rpad" style={{ minHeight: '100vh', background: c.bg, padding: '72px 48px 80px 0', maxWidth: '1100px', margin: '0 auto', transition: 'background 0.3s' }}>
       <style>{`
         .xp-card { transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s; }
         .xp-card:hover { transform: translateY(-4px); box-shadow: 0 18px 50px rgba(0,0,0,0.12) !important; border-color: ${c.green} !important; }

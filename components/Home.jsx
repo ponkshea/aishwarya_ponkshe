@@ -92,29 +92,10 @@ const Home = ({ dark, accent }) => {
         .layout-toggle:hover { opacity: 0.7; }
       `}</style>
 
-      {/* Layout Toggle */}
-      <div style={{ position: 'absolute', top: '24px', right: '24px', display: 'flex', gap: '8px', zIndex: 10 }}>
-        {['split', 'editorial'].map(l => (
-          <button key={l} className="layout-toggle"
-            onClick={() => setHeroLayout(l)}
-            style={{
-              fontFamily: "'DM Sans', sans-serif", fontSize: '11px', fontWeight: 600,
-              letterSpacing: '0.08em', textTransform: 'uppercase',
-              padding: '6px 12px', borderRadius: '4px',
-              background: heroLayout === l ? c.green : 'transparent',
-              color: heroLayout === l ? '#fff' : c.muted,
-              border: `1px solid ${heroLayout === l ? c.green : c.border}`,
-              cursor: 'pointer',
-            }}>
-            {l === 'split' ? '⊟ Split' : '⊠ Editorial'}
-          </button>
-        ))}
-      </div>
-
       {visible && heroLayout === 'split' && (
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', minHeight: '100vh', maxWidth: '1100px', margin: '0 auto' }}>
           {/* Left: Text */}
-          <div style={{ padding: '80px 48px 60px 0', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+          <div className="rpad" style={{ padding: '80px 48px 60px 0', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
             <div className="fade-up" style={{
               fontFamily: "'DM Sans', sans-serif", fontSize: '11px', fontWeight: 700,
               letterSpacing: '0.2em', textTransform: 'uppercase',
@@ -170,7 +151,7 @@ const Home = ({ dark, accent }) => {
           </div>
 
           {/* Right: Photo */}
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '60px 0 60px 48px', position: 'relative' }}>
+          <div className="rpad" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '60px 0 60px 48px', position: 'relative' }}>
             <div style={{
               position: 'absolute', top: '80px', right: '0',
               width: '320px', height: '320px',
@@ -209,7 +190,7 @@ const Home = ({ dark, accent }) => {
       )}
 
       {visible && heroLayout === 'editorial' && (
-        <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '100px 48px 60px 0' }}>
+        <div className="rpad" style={{ maxWidth: '1100px', margin: '0 auto', padding: '100px 48px 60px 0' }}>
           <div className="fade-up" style={{
             fontFamily: "'DM Sans', sans-serif", fontSize: '11px', fontWeight: 700,
             letterSpacing: '0.2em', textTransform: 'uppercase',
@@ -257,7 +238,7 @@ const Home = ({ dark, accent }) => {
       {/* Quote band */}
       {visible && (
         <div style={{ background: c.bgAlt, borderTop: `1px solid ${c.border}`, borderBottom: `1px solid ${c.border}`, transition: 'background 0.3s' }}>
-          <div className="quote-band" style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 48px 0 0', display: 'flex', alignItems: 'stretch' }}>
+          <div className="quote-band rpad" style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 48px 0 0', display: 'flex', alignItems: 'stretch' }}>
             <div style={{ flex: 1, padding: '44px 24px', display: 'flex', alignItems: 'center', gap: '20px' }}>
               <span style={{ fontFamily: "'Playfair Display', serif", fontSize: '64px', fontWeight: 900, color: c.green, lineHeight: 0.6, alignSelf: 'flex-start' }}>“</span>
               <blockquote style={{ margin: 0, fontFamily: "'Playfair Display', serif", fontStyle: 'italic', fontWeight: 700, fontSize: 'clamp(22px, 2.4vw, 30px)', lineHeight: 1.25, color: c.text, letterSpacing: '-0.3px' }}>
@@ -274,7 +255,7 @@ const Home = ({ dark, accent }) => {
 
       {/* Skills */}
       {visible && (
-        <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '64px 48px 80px 0' }}>
+        <div className="rpad" style={{ maxWidth: '1100px', margin: '0 auto', padding: '64px 48px 80px 0' }}>
           <div style={{ marginBottom: '40px' }}>
             <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '11px', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: c.green, marginBottom: '8px' }}>What I bring</div>
             <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '32px', fontWeight: 900, color: c.text, margin: 0, letterSpacing: '-0.5px' }}>Skills & Expertise</h2>

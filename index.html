@@ -73,6 +73,20 @@
       stroke-dashoffset: 2000;
       animation: dashDraw 3.5s 0.6s ease forwards;
     }
+
+    /* === Responsive gutters & grid collapse === */
+    .rpad { box-sizing: border-box; }
+    @media (max-width: 1024px) {
+      .rpad { padding-left: 36px !important; padding-right: 36px !important; }
+    }
+    /* On tablet & phone, any multi-column grid inside the content stacks */
+    @media (max-width: 820px) {
+      .main-content [style*="grid-template-columns"] { grid-template-columns: 1fr !important; }
+    }
+    @media (max-width: 600px) {
+      .rpad { padding-left: 20px !important; padding-right: 20px !important; }
+      .hero-img-wrap { width: 76vw !important; height: auto !important; aspect-ratio: 34 / 42 !important; }
+    }
   </style>
 </head>
 <body>
